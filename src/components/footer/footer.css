@@ -1,7 +1,7 @@
 
 @media(min-width:349px){
    .container_footer{
-      position: absolute;
+      position: relative;
       bottom :0;
       width:100%;
       display:flex;
@@ -27,7 +27,7 @@
 }
 @media(min-width:768px){
    .container_footer{
-      position: absolute;
+      position:relative;
       bottom :0;
       width: 50%;
       right:25%;

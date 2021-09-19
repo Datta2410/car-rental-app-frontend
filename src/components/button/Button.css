@@ -3,10 +3,5 @@
     color: #fdfdfd;
     border-radius: 20px;
     width: 100%;
-}
-.submit-button h3{
-    padding: 5px 10px;
-}
-.button-div{
-    width: 15%
+    margin: 10px;
 }
