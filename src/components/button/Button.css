@@ -5,3 +5,10 @@
     width: 100%;
     margin: 10px;
 }
+.submit-button-disabled{
+    background-color: #ff0038;
+    color: #fdfdfd;
+    border-radius: 20px;
+    width: 100%;
+    margin: 10px;
+}

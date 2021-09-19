@@ -2,6 +2,8 @@ import './Card.css'
 import React, { useState } from 'react'
 import Button from '../button/Button'
 import Popup from '../popup/Popup'
+import axios from 'axios'
+import url from '../../constants/urls'
 
 const Card = ({car}) => {
     const [popup, setpopup] = useState(false)
@@ -16,13 +18,13 @@ const Card = ({car}) => {
     }
     const rentCalc = (carType, days) => {
         if(carType === 'Hatchback'){
-            if(days < 5) return 500
+            if(days < 5) setRent(500)
             else{
                 setRent(500 + (days - 5)*500)
             }
         }
         if(carType === 'Sedan'){
-            if(days < 3) return 500
+            if(days < 3) setRent(500)
             else{
                 setRent(500 + (days - 3)*500)
             }
@@ -31,21 +33,45 @@ const Card = ({car}) => {
             setRent(1000*days)
         }
     }
+    const updateAvail = () => {
+        axios.post(url+'/cars/updateAvail', {
+            _id: car._id
+        })
+        car.status = "Unavailable"
+    }
     return (
         <>
         <div className='card'>
-            {/* <img src={img}/> */}
+            <img src={car.urls[0].url} className='car-img'/>
             <p>{car.carName}</p>
             <p>{car.type}</p>
             <p>{car.status}</p>
-            <p>{car.odometer}</p>
             <div className='button-div'>
-                <Button onClick={() => setpopup(true)}>Book</Button>
+                <Button 
+                disabled={car.status === "Unavailable"  ? true : false}
+                onClick={() => setpopup(true)}>
+                    {car.status === "Unavailable"  ? "Unavailable" : "Book"}
+                </Button>
             </div>
         </div>
         <Popup Trigger={popup} setTrigger={popClose}>
             <div>
-                <h3>Car Details</h3>
+                {rent > 0 ? (
+                    <>
+                        <h2>Receipt</h2>
+                        <div className='car-info'>
+                            <h3>Customer Name: {custName}</h3>
+                            <h3>Date: {Date().toString().substr(4,11)}</h3>
+                        </div>
+                        <div>
+                            <h3>Car: {car.carName} ({car.type})</h3>
+                            <h3>Rental Period: {rentDays} days</h3>
+                        </div>
+                        <h2>Total: Rs. {rent}</h2>
+                    </>
+                ): (
+                    <>
+                    <h3>Car Details</h3>
                 <div className='car-info'>
                     <h4>Car : {car.carName}</h4>
                     <h4>Car Type: {car.type}</h4>
@@ -56,7 +82,7 @@ const Card = ({car}) => {
                         <h4>Customer Name</h4>
                         <input 
                         type='text'
-                        className='text-inp'
+                        className='inp'
                         value={custName}
                         onChange={ e => setcustName(e.target.value)}/>
                     </div>
@@ -64,17 +90,21 @@ const Card = ({car}) => {
                         <h4>Number of Days</h4>
                         <input 
                         type='number' 
-                        className='num-inp'
+                        className='inp'
                         onChange={e => setRentDays(e.target.value)}/>
                     </div>
                 </div>
                 <div className='button-div2'>
                     <Button 
-                    onClick={() => rentCalc(car.type, rentDays)}>
+                    onClick={() => {
+                        rentCalc(car.type, rentDays)
+                        updateAvail()
+                        }}>
                         Rent the Car
                     </Button>
                 </div>
-                {rent > 0 ? (<p>{rent}</p>): null}
+                    </>
+                )}
             </div>
                
         </Popup>

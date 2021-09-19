@@ -10,7 +10,10 @@ const Home = () => {
     const [Cars, setCars] = useState([])
     useEffect(() => {
         axios.get(url+'/cars/getAllCars')
-        .then(result => setCars(result.data))
+        .then(result => {
+            setCars(result.data)
+            console.log(result.data)
+        })
         .catch(error => console.log(error))
     }, [])
     return (

@@ -1,6 +1,6 @@
 import './Popup.css'
 import React from 'react'
-import closeIcon from '../../assets/window-close.svg'
+import closeIcon from '../../assets/cancel.png'
 const Popup = ({
     children,
     setTrigger,
@@ -12,7 +12,9 @@ const Popup = ({
                 <button 
                 className='close-button'
                 onClick={() => setTrigger()}>
-                close
+                <img 
+                className='close-img'
+                src={closeIcon}/>
                 </button>
                 {children}
             </div>
