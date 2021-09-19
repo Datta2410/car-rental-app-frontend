@@ -36,6 +36,7 @@ const Inventory = () => {
                     if(car.status === "Available"){
                         return (<CardInventory car={car}/>)
                     }
+                    else return null
                     
                 })
             )}

@@ -14,6 +14,7 @@ const Popup = ({
                 onClick={() => setTrigger()}>
                 <img 
                 className='close-img'
+                alt='Loading'
                 src={closeIcon}/>
                 </button>
                 {children}
