@@ -1,21 +1,12 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import './Home.css'
 import Header from '../../components/Header/Header'
 import Footer from '../../components/footer/Footer'
 import Button from '../../components/button/Button'
 import Card from '../../components/card/Card'
-import axios from 'axios'
-import url from '../../constants/urls'
+import CarsContext from '../../contexts/CarsContext'
 const Home = () => {
-    const [Cars, setCars] = useState([])
-    useEffect(() => {
-        axios.get(url+'/cars/getAllCars')
-        .then(result => {
-            setCars(result.data)
-            console.log(result.data)
-        })
-        .catch(error => console.log(error))
-    }, [])
+    const Cars = useContext(CarsContext)
     return (
         <div className='home'>
             <Header/>
