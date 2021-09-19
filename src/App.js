@@ -1,10 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Route from './components/routecomp/Route';
-import url from './constants/urls';
-import Home from './containers/home/Home'
-import Inventory from './containers/inventory/Inventory';
-import { CarsProvider } from './contexts/CarsContext';
+import Route from './components/routecomp/Route.js';
+import url from './constants/urls.js';
+import Home from './containers/home/Home.js'
+import Inventory from './containers/inventory/Inventory.js';
+import { CarsProvider } from './contexts/CarsContext.js';
 
 const App = () => {
   const [Cars, setCars] = useState([])

@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import './Home.css'
-import Header from '../../components/header/Header'
-import Footer from '../../components/footer/Footer'
-import Card from '../../components/card/Card'
-import CarsContext from '../../contexts/CarsContext'
+import Header from '../../components/header/Header.js'
+import Footer from '../../components/footer/Footer.js'
+import Card from '../../components/card/Card.js'
+import CarsContext from '../../contexts/CarsContext.js'
 const Home = () => {
     const Cars = useContext(CarsContext)
     return (
