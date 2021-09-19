@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react'
 import Button from '../../components/button/Button'
 import CardInventory from '../../components/card/CardInventory'
 import Footer from '../../components/footer/Footer'
-import Header from '../../components/Header/Header'
+import Header from '../../components/header/Header'
 import CarsContext from '../../contexts/CarsContext'
 import './Inventory.css'
 
