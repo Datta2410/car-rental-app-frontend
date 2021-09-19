@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import Route from './components/routecomp/Route.js';
+import Route from './components/route/Route.js';
 import url from './constants/urls.js';
 import Home from './containers/home/Home.js'
 import Inventory from './containers/inventory/Inventory.js';

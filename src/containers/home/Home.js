@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import './Home.css'
-import Header from '../../components/header/Header.js'
+import Header from '../../components/headerNav/Header.js'
 import Footer from '../../components/footer/Footer.js'
 import Card from '../../components/card/Card.js'
 import CarsContext from '../../contexts/CarsContext.js'
