@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import './App.css';
 import Route from './components/route/Route';
 import url from './constants/urls';
 import Home from './containers/home/Home'
